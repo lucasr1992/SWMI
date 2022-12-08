@@ -9,14 +9,7 @@ interface props{
 }
 
 
-export const UnderBar = styled.div<props>`
-    width: ${props => props.isOpen ? 'auto' : v.sidebarWidth};
-    height: 100vh;
-    background: ${v.bgD};
-    position: relative;
-    
-   
-`;
+
 
 export const GroupBar = styled.div`
   display: flex;
@@ -25,19 +18,15 @@ export const GroupBar = styled.div`
     display: none;
   }
   
-  
 `;
 
 
 export const SSidebar = styled.div<props>`
   width: ${props => props.isOpen ? 'auto' : v.sidebarWidth};
-  height: 100%;
+  min-height: 100vh;
   background: ${v.bgD};
   padding: ${v.lgSpacing};
   position: relative;
-  
-  
-  
 `;
 
 

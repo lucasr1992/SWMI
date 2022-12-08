@@ -1,4 +1,4 @@
-import { SLogo, SSidebar, SSearch,  SDivider, SSidebarButton, SLista, UnderBar, GroupBar } from "./styles";
+import { SLogo, SSidebar, SSearch,  SDivider, SSidebarButton, SLista, GroupBar } from "./styles";
 import { GiTechnoHeart } from 'react-icons/gi'
 import { AiOutlineLeft, AiOutlineSearch } from 'react-icons/ai'
 import { SidebarData } from '../Lista/ListLinks'
@@ -57,9 +57,7 @@ function Sidebar({onClose= () => {} }:any){
           
         <SDivider/>
       </SSidebar>
-        <UnderBar isOpen={sidebarOpen}> 
-
-        </UnderBar>
+        
         
       </GroupBar>
       

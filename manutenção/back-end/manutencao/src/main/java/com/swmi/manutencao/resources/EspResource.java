@@ -16,4 +16,14 @@ public class EspResource {
     public Esp gravar(@PathVariable String equip, @PathVariable String parametro, @PathVariable String valor){
         return espService.Salvar(equip, parametro, valor);
     }
+
+    @GetMapping("/editar/{valor}/{id}")
+    public Esp editar(@PathVariable Long id, @PathVariable String valor){
+        return espService.Editar(id, valor);
+    }
+
+    @GetMapping("/busca/{id}")
+    public Esp buscarId(@PathVariable Long id){
+        return espService.buscar(id);
+    }
 }
