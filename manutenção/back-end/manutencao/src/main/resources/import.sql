@@ -66,9 +66,11 @@ insert into tb_linha (linha, area_id, status) values ("DBW#1", 1, "ATIVO");
 insert into tb_linha (linha, area_id, status) values ("DBW#2", 1, "ATIVO");
 insert into tb_linha (linha, area_id, status) values ("PICO ECO", 2, "ATIVO");
 
-insert into tb_colaborador(registro, nome, email, status, uo_id, senha, cargo_id, departamento_id) values ("9002065", "Lucas Rodrigues", "lucas.rodrigues@teste.com", "ATIVO", 1, "1234", 4, 1);
-insert into tb_colaborador(registro, nome, email, status,  uo_id, senha, cargo_id, departamento_id) values ("101010", "Colaborador Teste", "teste.teste@teste.com", "ATIVO", 1, "1234", 2, 3);
-insert into tb_colaborador(registro, nome, email, status,  uo_id, senha, cargo_id, departamento_id) values ("202020", "Tecnico Teste", "teste.teste@teste.com", "ATIVO", 1, "1234", 3, 1);
+insert into tb_colaborador(registro, nome, email, status, uo_id, senha, cargo_id, departamento_id) values ("9002065", "LUCAS RODRIGUES", "LUCAS.RODRIGUES@TESTE.COM", "ATIVO", 1, "1234", 4, 1);
+insert into tb_colaborador(registro, nome, email, status,  uo_id, senha, cargo_id, departamento_id) values ("101010", "OPERADOR TESTE", "OPERADOR.TESTE@TESTE.COM", "ATIVO", 1, "1234", 2, 3);
+insert into tb_colaborador(registro, nome, email, status,  uo_id, senha, cargo_id, departamento_id) values ("202020", "TECNICO TESTE", "TECNICO.TESTE@TESTE.com", "ATIVO", 1, "1234", 3, 1);
 
 
-insert into tb_Esp(equipamento, parametro, valor) values ("BMZT-001", "TEMPERATURA", "300");
+insert into tb_esp(equipamento, parametro, valor) values ("BMZT-001", "TEMPERATURA", "300");
+
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Registro", 1, 1, 1, 1);

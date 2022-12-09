@@ -37,7 +37,7 @@ export const MobileMenu = styled.div<props>`
 
     /* width: 100vw; */
     width:${props => props.visible ? '100vw' : 'none'};
-    height:${props => props.visible ? '100vh' : 'none'};
+    min-height:${props => props.visible ? '100vh' : 'none'};
     /* height:100vh; */
     z-index: 1;
     position: absolute;

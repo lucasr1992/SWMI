@@ -14,6 +14,5 @@ export const SLayout = styled.div`
 export const SMain = styled.main`
   display: flex;
   padding: calc(${v.smSpacing});
-  width: 100% 
-  
+  width: 100%;  
 `;

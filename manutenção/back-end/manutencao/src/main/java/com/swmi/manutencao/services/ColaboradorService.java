@@ -17,8 +17,7 @@ public class ColaboradorService {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
 
-    @Autowired
-    private AprovacaoService aprovacaoService;
+
 
     public List<Colaborador> listar(){
         return colaboradorRepository.findAll();
@@ -61,10 +60,7 @@ public class ColaboradorService {
         }
     }
 
-    public Aprovacao pendenciasAprovacao(Aprovacao aprovacao){
-        String status = verificarStatus(aprovacao);
-        return aprovacaoService.gerarPendencia(aprovacao, status);
-    }
+
 
     public String verificarStatus(Aprovacao aprovacao){
         Colaborador itemRequisicao = buscarRegistro(aprovacao.getItemRequisicao());
@@ -76,40 +72,7 @@ public class ColaboradorService {
         return status;
     }
 
-    public Aprovacao pendencias(Aprovacao aprovacao, String parametro){
-        Aprovacao pendencia = aprovacaoService.buscarId(aprovacao.getId());
-        pendencia.setAprovador(aprovacao.getAprovador());
-        verificarStatus(pendencia);
-        Colaborador aprovador = buscarRegistro(aprovacao.getAprovador().getRegistro());
-        Colaborador item = buscarRegistro(pendencia.getItemRequisicao());
 
-        String nivelAprovador = aprovador.getCargo().getCargo();
-        Long uoAprovador = aprovador.getUo().getId();
-        Long departamentoAprovador = aprovador.getDepartamento().getId();
-
-        String descricao = pendencia.getDescricao();
-        Long uoItem = pendencia.getUoItem().getId();
-        Long departamentoItem = pendencia.getDepartamentoItem().getId();
-
-        if(nivelAprovador.equals("SUPERVISOR")
-                && uoAprovador.equals(uoItem) && departamentoAprovador.equals(departamentoItem)){
-            if(parametro.equals("SIM")){
-                if(descricao.equals("DESATIVAR COLABORADOR")){
-                    item.setStatus("DESATIVADO");
-                    salvar(item);
-                    pendencia.setStatus("APROVADO");
-                    return aprovacaoService.salvar(pendencia);
-                }
-                item.setStatus("ATIVO");
-                salvar(item);
-                pendencia.setStatus("APROVADO");
-                return aprovacaoService.salvar(pendencia);
-            }
-            pendencia.setStatus("REPROVADO");
-            return aprovacaoService.salvar(pendencia);
-        }
-        throw new PermissaoException("SUPERVISOR", "da Mesma Uniade Operativa e Departamento");
-    }
 
 
 

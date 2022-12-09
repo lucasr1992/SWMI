@@ -44,8 +44,6 @@ export const Content = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-
-    
     cursor: pointer;    
     width: 100%;
     height: 100%;
@@ -76,8 +74,7 @@ export const ContentSub = styled.div`
     background: inset 0 0 0 1px ${v.bg3};
     border-radius: 0px 0px 4px 4px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
   }
 
    
@@ -86,7 +83,6 @@ export const ContentSub = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-
     background: #b8b8b8;
     cursor: pointer;    
     width: 100%;

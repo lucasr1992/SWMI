@@ -64,21 +64,21 @@ function Home(classe : PageProps){
   const [areaList, setAreaList] = useState<props>()
 
 
-  useEffect(() => {
-    let intervalId:any
-    try{
-      intervalId = setInterval(() => {
-        loadAreaAtivo();
-      }, 1000)
+  // useEffect(() => {
+  //   let intervalId:any
+  //   try{
+  //     intervalId = setInterval(() => {
+  //       loadAreaAtivo();
+  //     }, 1000)
       
-    }catch(error:any){
-      clearInterval(intervalId);
-    }
+  //   }catch(error:any){
+  //     clearInterval(intervalId);
+  //   }
 
-    return () => {
-      clearInterval(intervalId);
-    }//limpar "matar o setInterval para não continuar rodando quando mudo de pagina"
-  },[])
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   }//limpar "matar o setInterval para não continuar rodando quando mudo de pagina"
+  // },[])
 
   const loadAreaAtivo = async() => {    
       const response = await api.get('/esps/busca/1').then((response) => {

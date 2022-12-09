@@ -81,7 +81,6 @@ export const SLogo = styled.div<props>`
   
   cursor: pointer;
   margin-bottom: ${v.lgSpacing};
-  
 `;
 
 

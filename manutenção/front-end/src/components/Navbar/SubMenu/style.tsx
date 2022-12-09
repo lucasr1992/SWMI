@@ -12,25 +12,21 @@ export const Content = styled.div<props>`
   border-radius: ${v.borderRadius};
   margin: 8px 0;
   display: ${props => props.isOpen ?  'flex' : {}};
-  justify-content: center;
+  justify-content: center;  
   
   :hover{
     box-shadow: inset 0 0 0 1px ${v.bg3};
-    
   }
 
   .dropdown{
     width:100%;
     /* position: relative; */
-    
     list-style: none;
     text-align: start;
     background: inset 0 0 0 1px ${v.bg3};
     border-radius: 0px 0px 4px 4px;
     display: flex;
     flex-direction: column; 
-       
-    
   }
 `;
 

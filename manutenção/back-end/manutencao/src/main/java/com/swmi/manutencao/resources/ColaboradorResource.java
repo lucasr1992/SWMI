@@ -2,17 +2,13 @@ package com.swmi.manutencao.resources;
 
 
 
-import com.swmi.manutencao.domain.Aprovacao;
 import com.swmi.manutencao.domain.Colaborador;
 
-import com.swmi.manutencao.exceptions.PermissaoException;
-import com.swmi.manutencao.services.AprovacaoService;
 import com.swmi.manutencao.services.ColaboradorService;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -26,8 +22,7 @@ public class ColaboradorResource {
     @Autowired
     private ColaboradorService colaboradorService;
 
-    @Autowired
-    private AprovacaoService aprovacaoService;
+
 
    @GetMapping
     public List<Colaborador> listarColaborador(){
@@ -79,17 +74,6 @@ public class ColaboradorResource {
       "registro", "nome", "data_cadastro", "data_desativacao", "status" );
     return colaboradorService.salvar(colaboradorEdit);
   }
-
-  @PostMapping("/pendencia")
-  public Aprovacao gerarPendencia(@RequestBody Aprovacao aprovacao){
-     return colaboradorService.pendenciasAprovacao(aprovacao);
-  }
-
-  @PutMapping("/pendencia/{parametro}")
-  public Aprovacao fecharPendencia(@RequestBody Aprovacao aprovacao, @PathVariable String parametro){
-      return colaboradorService.pendencias(aprovacao, parametro);
-   }
-
 
 
 }

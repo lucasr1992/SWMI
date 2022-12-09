@@ -11,6 +11,7 @@ type props={
     path: string;
     icon: JSX.Element;
     notificatio: number,
+    tituloVisible: boolean,
     subNav: {
         title: string;
         path: string;
@@ -32,7 +33,7 @@ type propSub={
     title: string;
     path: string;
     icon: JSX.Element;
-    cName: string;
+    subTituloVisible: boolean,
     subDropdown: {
         title:  string,
         path:  string,
@@ -58,13 +59,14 @@ export function SubMenu({item, ativo} : props){
       <SLinkContainer   onMouseLeave={showSubOff}>
       <ul className="dropdown" >
         
-        <SLink to={item.path}  onClick={item.subNav && showSubnav}>  
+      {item.tituloVisible ? <SLink to={item.path}  onClick={item.subNav && showSubnav}>  
           <SLinkIcon  >{item.icon}</SLinkIcon> 
               { !ativo && <SLinkLabel >{item.title}</SLinkLabel>}
               {!!item.notificatio && !ativo &&(
                 <SLinkNotification >{item.notificatio}</SLinkNotification>
               )}         
-        </SLink>
+        </SLink> : null
+      }
         
           {!ativo && subnav && item.subNav.map((item: any, index:any) => {
             return(
@@ -93,16 +95,16 @@ export function SubDropdown({subNav, ativo} : propSub){
 
   return(
     <ContentSub>
-      <div onClick={subNav.subDropdown && showSubnav}>
+      {subNav.subTituloVisible ? <div onClick={subNav.subDropdown && showSubnav}>
         <Link className="links" to={subNav.path} ><SLinkIconNav>{subNav.icon}</SLinkIconNav>{subNav.title}</Link> 
         
-      </div>
+      </div> : null}
       {!ativo && subnav && subNav.subDropdown.map((item:any, index:any) => {
         return(
           <>
             <Link className="links-drop" to={item.path}><SLinkIconSubNav className="subdrop">{subNav.icon}</SLinkIconSubNav>{item.title}</Link>
-          </>
-        );
+          </> 
+        )
       })}
         
     </ContentSub>
