@@ -69,7 +69,7 @@ function Home(classe : PageProps){
     try{
       intervalId = setInterval(() => {
         loadAreaAtivo();
-      }, 3000)
+      }, 1000)
       
     }catch(error:any){
       clearInterval(intervalId);
