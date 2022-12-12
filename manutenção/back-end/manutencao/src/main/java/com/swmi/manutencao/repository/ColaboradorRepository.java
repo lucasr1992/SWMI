@@ -20,10 +20,6 @@ public interface ColaboradorRepository extends JpaRepository<Colaborador, Long> 
     List<Colaborador> findListByDepartamento(Long departamentoId);
     Optional<Colaborador> findByRegistro(String registro);
 
-
-
-
-
-
+    Optional<Colaborador> findByRegistroAndSenha(String registro, String senha);
 
 }

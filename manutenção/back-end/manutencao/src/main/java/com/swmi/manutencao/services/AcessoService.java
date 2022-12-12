@@ -7,6 +7,8 @@ import com.swmi.manutencao.repository.AcessoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AcessoService {
     @Autowired
@@ -14,10 +16,9 @@ public class AcessoService {
     @Autowired
     private AcessoRepository acessoRepository;
 
-    public Acesso buscarAcesso(Long id){
+    public List<Acesso> buscarAcesso(Long id){
         Cargo cargo = cargoService.buscaId(id);
         String idString = String.valueOf(id);
-        return acessoRepository.findByCargo(cargo)
-                .orElseThrow(() -> new NaoEncontradoException("Cargo", idString));
+        return acessoRepository.findByCargo(cargo);
     }
 }

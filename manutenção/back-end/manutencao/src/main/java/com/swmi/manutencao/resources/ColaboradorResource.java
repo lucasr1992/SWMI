@@ -75,5 +75,10 @@ public class ColaboradorResource {
     return colaboradorService.salvar(colaboradorEdit);
   }
 
+  @PostMapping("/login")
+    public Colaborador login(@RequestBody Colaborador colaborador){
+       return colaboradorService.login(colaborador);
+  }
+
 
 }

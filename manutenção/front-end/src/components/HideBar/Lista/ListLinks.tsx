@@ -15,7 +15,7 @@ export const SidebarData = [
     path: '/',
     icon: <AiIcons.AiFillHome />,
     notificatio: 0,
-    tituloVisible: 1,
+    visible: 0,
   },
 
   {
@@ -24,26 +24,24 @@ export const SidebarData = [
     path: null,
     icon: <TbIcons.TbDatabaseImport />,
     notificatio: 0,
-    tituloVisible: true,
+    visible: 0,
     subNav: [
       {
         title: 'Maquinas',
         path: null,
         icon: <GiIcons.GiWashingMachine />,
-        subTituloVisible: true,
+        visible: 0,
         subDropdown:[
           {
             title: 'Registro Maq.',
             path: null,
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Classificação Maq.',
             path: null,
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
         ]
       },
@@ -53,84 +51,74 @@ export const SidebarData = [
         path: null,
         icon: <BsIcons.BsFillPeopleFill />,
         notificatio: 0,
-        subTituloVisible: true,
+        visible: 0,
       },
 
       {
         title: 'Estrutura',
         path: null,
         icon: <GiIcons.GiFactory />,
-        subTituloVisible: true,
+        visible: true,
         subDropdown:[
           
           {
             title: 'BU',
             path: '/bus',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
       
           {
             title: 'Planta',
             path: '/plantas',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'UO',
             path: '/uos',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Area',
             path: '/areas',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Linha',
             path: '/linhas',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Tecnologia',
             path: '/tecnologias',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Tipo Equip.',
             path: '/tiposequip',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Especialidade',
             path: '/especialidades',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Cargo',
             path: '/cargos',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
 
           {
             title: 'Turno',
             path: '/turnos',
             icon: <GiIcons.GiFactory />,
-            subDropVisible:true,
           },
           
         ]
@@ -140,15 +128,12 @@ export const SidebarData = [
   },
 
 
-  
-
-
   {
     id: 2,
     title: 'Support',
     path: '/teste',
     icon: <IoIcons.IoMdHelpCircle />,
     notificatio: 0,
-    tituloVisible: true,
+    visible: 0,
   }
 ];

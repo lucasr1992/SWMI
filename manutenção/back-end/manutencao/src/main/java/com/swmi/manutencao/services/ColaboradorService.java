@@ -60,18 +60,12 @@ public class ColaboradorService {
         }
     }
 
-
-
-    public String verificarStatus(Aprovacao aprovacao){
-        Colaborador itemRequisicao = buscarRegistro(aprovacao.getItemRequisicao());
-        Colaborador requisitante = buscarRegistro(aprovacao.getRequisitante().getRegistro());
-        if(itemRequisicao == requisitante){
-            throw new EmUsoException("Colaborador", aprovacao.getItemRequisicao());
-        }
-        String status = itemRequisicao.getStatus();
-        return status;
+    public Colaborador login(Colaborador colaborador){
+        String registro = colaborador.getRegistro();
+        String senha = colaborador.getSenha();
+        return colaboradorRepository.findByRegistroAndSenha(registro, senha)
+                .orElseThrow(() -> new NaoEncontradoException("Colaborador", registro));
     }
-
 
 
 

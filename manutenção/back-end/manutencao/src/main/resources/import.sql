@@ -73,4 +73,10 @@ insert into tb_colaborador(registro, nome, email, status,  uo_id, senha, cargo_i
 
 insert into tb_esp(equipamento, parametro, valor) values ("BMZT-001", "TEMPERATURA", "300");
 
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Home", 1, 1, 1, 1);
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Registro", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Maquinas", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Colaborador", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Estrutura", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Support", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (2, "Home", 1, 1, 1, 1);
