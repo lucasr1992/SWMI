@@ -22,6 +22,7 @@ function CadastroCargo(){
   
   const formRef = useRef<FormHandles>(null);
   const route = useNavigate();
+  const rote = useNavigate();
   const { id }= useParams();
   const [campos, setCampos] = useState<requestFiled>({
     cargo:'',
@@ -31,10 +32,20 @@ function CadastroCargo(){
 
 
   useEffect(() =>{
+    LoginOn()
     if(id != undefined){
       findRegister()
+      
     }
   }, [id])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      rote("/")
+    }
+  }
 
   const findRegister = async() => {
     const resultado = await api.get(`/cargos/id/${id}`)

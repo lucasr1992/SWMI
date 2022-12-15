@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import * as faker from '@faker-js/faker'
 import { Content } from './style'
 import api from '../../service/api';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(
     CategoryScale,
@@ -62,7 +63,8 @@ export const options = {
 
 function Home(classe : PageProps){
   const [areaList, setAreaList] = useState<props>()
-
+  const rota = useNavigate();
+  
 
   // useEffect(() => {
   //   let intervalId:any
@@ -79,6 +81,25 @@ function Home(classe : PageProps){
   //     clearInterval(intervalId);
   //   }//limpar "matar o setInterval para não continuar rodando quando mudo de pagina"
   // },[])
+
+
+ 
+
+  useEffect(() => {
+    LoginOn();
+  })
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      rota("/")
+    }
+  }
+  
+
+
+  
 
   const loadAreaAtivo = async() => {    
       const response = await api.get('/esps/busca/1').then((response) => {

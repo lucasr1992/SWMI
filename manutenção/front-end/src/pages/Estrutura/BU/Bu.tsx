@@ -23,11 +23,25 @@ function Bu(){
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  
 
   useEffect(() => {
     loadBuAtivo();
     BuCadastrada();
+    LoginOn();
   }, [])
+
+
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      rote("/")
+    }
+  }
+
+
 
   function BuCadastrada(){
     const bu = localStorage.getItem('@BU')

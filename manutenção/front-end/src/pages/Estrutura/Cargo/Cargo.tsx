@@ -26,7 +26,16 @@ function Cargo(){
   useEffect(() => {
     loadCargoAtivo();
     CargoCadastrada();
+    LoginOn;
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      rote("/")
+    }
+  }
 
   function CargoCadastrada(){
     const cargo = localStorage.getItem('@CARGO')

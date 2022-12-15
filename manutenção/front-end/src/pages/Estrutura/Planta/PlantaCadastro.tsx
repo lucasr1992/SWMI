@@ -42,8 +42,17 @@ function CadastroPlanta(){
   const route = useNavigate();
   
   useEffect(() =>{
-    loadPlantaAtiva()
+    loadPlantaAtiva();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   async function loadPlantaAtiva(){
     try{

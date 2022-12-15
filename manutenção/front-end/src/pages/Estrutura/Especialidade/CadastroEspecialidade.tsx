@@ -31,10 +31,19 @@ function CadastroEspecialidade(){
 
 
   useEffect(() =>{
+    LoginOn();
     if(id != undefined){
       findRegister()
     }
   }, [id])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   const findRegister = async() => {
     const resultado = await api.get(`/especialidades/id/${id}`)

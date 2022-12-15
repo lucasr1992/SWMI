@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
 import { useState, useCallback, useRef, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ import getErrors from "../utils/tratarErrosYup";
 import api from "../service/api";
 import Layout from "../components/HideBar/LayoutSideBarHide/Layout";
 import { Container } from './style';
+
 
 import Home from "../pages/Home/Home";
 import Bu from "../pages/Estrutura/BU/Bu";
@@ -76,7 +77,6 @@ function AppRoutes(){
   const [usuario, setUsuario] = useState<dadosUsuario>();
   const [acesso, setAcesso] = useState([]);
   
-
   useEffect(() => {
     LoginOn();
   })
@@ -84,6 +84,7 @@ function AppRoutes(){
   function LoginOn(){
     localStorage.setItem('@LOGIN', "LoginOn");
   }
+  
 
 
   const logar = useCallback(async (data: request) => {
@@ -116,6 +117,7 @@ function AppRoutes(){
             })
 
             setLogin(true);
+  
 
           }).catch((error: any) => {
             const msg = error.response.data.mensagem + " Status: " + error.response.status;
@@ -135,9 +137,7 @@ function AppRoutes(){
   }, [])
 
 
-  function teste(){
-    console.log(acesso)
-  }
+ 
 
 
 
@@ -177,7 +177,7 @@ function AppRoutes(){
       <ToastContainer closeOnClick={true} theme={'colored'} autoClose={2000}  pauseOnHover={true} closeButton={false}/>
       {login ? 
         <BrowserRouter>
-          <Layout >  
+          <Layout acesso={acesso}>  
               <PageContante/>
           </Layout>
         </BrowserRouter> 
@@ -192,8 +192,8 @@ function AppRoutes(){
               <label>Senha:</label>
               <InputDefalt name={"senha"} Main={true}/>
             </div>
-            <button type="submit"><ButtonDefault>Login</ButtonDefault></button>
-            <button type="button" onClick={teste}><ButtonDefault>Teste</ButtonDefault></button>
+            <button className="botao" type="submit"><ButtonDefault>Login</ButtonDefault></button>
+           
           </Form>
         </Container>
       }    

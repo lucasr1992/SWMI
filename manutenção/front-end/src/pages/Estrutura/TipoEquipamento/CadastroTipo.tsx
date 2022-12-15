@@ -18,8 +18,6 @@ type requestFiled ={
 }
 
 function CadastroTipo(){
-
-  
   const formRef = useRef<FormHandles>(null);
   const route = useNavigate();
   const { id }= useParams();
@@ -31,10 +29,19 @@ function CadastroTipo(){
 
 
   useEffect(() =>{
+    LoginOn();
     if(id != undefined){
       findRegister()
     }
   }, [id])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   const findRegister = async() => {
     const resultado = await api.get(`/tiposequip/id/${id}`)

@@ -36,7 +36,16 @@ function CadastroLinha(){
   
   useEffect(() =>{
     loadLinhaAtiva()
+    LoginOn()
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   async function loadLinhaAtiva(){
     try{

@@ -6,17 +6,18 @@ import Navbar from "../../Navbar/Header/Navbar";
 
 interface MyProps extends HTMLAttributes<HTMLDivElement>{
   children: JSX.Element
+  acesso:any
 }
 
 
-function Layout(props:MyProps){
+function Layout(props:MyProps ){
   const [ isOpen, setIsOpen] = useState(false)
   const showBar = () => setIsOpen(!isOpen);
  
 
   return(
     <SLayout >
-      <Sidebar onClose={() => showBar}/>
+      <Sidebar onClose={() => showBar} acesso={props.acesso}/>
       <div className="sidebar">
         <Navbar  />
         <SMain >{props.children}</SMain>

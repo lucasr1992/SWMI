@@ -31,7 +31,16 @@ function Turno(){
   useEffect(() => {
     loadTurnoAtivo();
     TurnoCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      rote("/")
+    }
+  }
 
   function TurnoCadastrada(){
     const turno = localStorage.getItem('@TURNO')

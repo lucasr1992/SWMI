@@ -21,6 +21,7 @@ type resposta ={
 
 function Linha(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [linhaList, setLinhaList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +30,16 @@ function Linha(){
   useEffect(() => {
     loadLinhaAtivo();
     LinhaCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   function LinhaCadastrada(){
     const uo = localStorage.getItem('@LINHA')

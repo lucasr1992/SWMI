@@ -22,6 +22,7 @@ type resposta ={
 
 function Planta(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [plantaList, setPlantaList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<number>()
   const [modalVisible, setModalVisible] = useState(false);
@@ -31,7 +32,16 @@ function Planta(){
   useEffect(() => {
     loadPlantaAtivo();
     PlantaCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
 
   function PlantaCadastrada(){

@@ -18,15 +18,26 @@ type resposta ={
 
 function Especialidade(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [especialidadeList, setEspecialidadeList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
 
   useEffect(() => {
+    LoginOn();
     loadEspecialidadeAtivo();
     EspecialidadeCadastrada();
+    
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   function EspecialidadeCadastrada(){
     const especialidade = localStorage.getItem('@ESPECIALIDADE')

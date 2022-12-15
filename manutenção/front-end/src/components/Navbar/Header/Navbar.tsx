@@ -10,7 +10,7 @@ function Navbar(){
   const handleClick = () => setBurger(!burger);
   // const closeMobileMenu = () => setClick(false);
 
-  function teste(){
+  function burgerOn(){
     setBurger(!burger)
   }
   
@@ -27,7 +27,7 @@ function Navbar(){
            {burger && SidebarData.map((item: any, index) => {
               return(
                 <>
-                  <Dropdown onClose={() => teste()} item={item} key={index}/>
+                  <Dropdown onClose={() => burgerOn()} item={item} key={index}/>
                 </>
               )
             })}           

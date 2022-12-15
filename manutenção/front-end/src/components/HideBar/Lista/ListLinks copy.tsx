@@ -10,7 +10,7 @@ import * as BsIcons from 'react-icons/bs'
 export const SidebarData = [
   {
     
-    id: 0,
+    id: 6,
     title: 'Home',  
     path: '/',
     icon: <AiIcons.AiFillHome />,
@@ -19,7 +19,7 @@ export const SidebarData = [
   },
 
   {
-    id: 1,
+    id: 7,
     title: 'Registros',
     path: null,
     icon: <TbIcons.TbDatabaseImport />,
@@ -127,7 +127,7 @@ export const SidebarData = [
 
 
   {
-    id: 2,
+    id: 8,
     title: 'Support',
     path: '/teste',
     icon: <IoIcons.IoMdHelpCircle />,

@@ -20,6 +20,7 @@ type resposta ={
 
 function TipoEquip(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [tipoList, setTipoList] = useState<resposta[]>([])
   const [idList, setIdList] = useState({
     id: 0,
@@ -31,7 +32,16 @@ function TipoEquip(){
   useEffect(() => {
     loadTipoAtivo();
     TipoCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   function TipoCadastrada(){
     const tipo = localStorage.getItem('@TIPOEQUIPAMENTO')

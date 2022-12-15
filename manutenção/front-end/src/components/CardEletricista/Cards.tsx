@@ -70,6 +70,8 @@ export function CardComumEletricista(){
   const rotateX = useTransform(y, [-100, 100], [30, -30]);
   const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
+  
+
   return(
     <CardWrapper>
       <Content 
@@ -82,10 +84,6 @@ export function CardComumEletricista(){
         <img src={EpicoEletrico} /> 
         <AvatarWrapper>
           <Avatar
-            style={{x, y, rotateX, rotateY, z:10000}}
-            drag
-            dragElastic={0.12}
-            dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
             whileTap={{cursor: 'grabbing'}}
           >
             <img src={AvatarCard}/>

@@ -21,6 +21,7 @@ type resposta ={
 
 function Uo(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [uoList, setUoList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +30,16 @@ function Uo(){
   useEffect(() => {
     loadUoAtivo();
     UoCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   function UoCadastrada(){
     const uo = localStorage.getItem('@UO')

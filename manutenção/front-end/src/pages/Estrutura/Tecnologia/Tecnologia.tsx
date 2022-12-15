@@ -20,6 +20,7 @@ type resposta ={
 
 function Tecnologia(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [tecnologiaList, setTecnologiaList] = useState<resposta[]>([])
   const [idList, setIdList] = useState({
     id: 0,
@@ -31,7 +32,16 @@ function Tecnologia(){
   useEffect(() => {
     loadTecnologiaAtivo();
     TecnologiaCadastrada();
+    LoginOn();
   }, [])
+
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
 
   function TecnologiaCadastrada(){
     const tecnologia = localStorage.getItem('@TECNOLOGIA')

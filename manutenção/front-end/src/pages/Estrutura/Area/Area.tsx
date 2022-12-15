@@ -23,18 +23,27 @@ type resposta ={
 
 function Area(){
   const rote = useNavigate();
+  const route = useNavigate();
   const [areaList, setAreaList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
 
   useEffect(() => {
+    LoginOn();
     loadAreaAtivo();
     AreaCadastrada();
   }, [])
 
-  function AreaCadastrada(){
-    
+  function LoginOn(){
+    const login = localStorage.getItem('@LOGIN')
+    if(login === "LoginOn"){
+      localStorage.removeItem('@LOGIN')
+      route("/")
+    }
+  }
+
+  function AreaCadastrada(){    
     const area = localStorage.getItem('@AREA')
     localStorage.removeItem('@AREA')
     if(area != null){
