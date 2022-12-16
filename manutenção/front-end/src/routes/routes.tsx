@@ -145,29 +145,29 @@ function AppRoutes(){
   const PageContante = useCallback(() => {
     return(
       <Routes>    
-          <Route path="/teste" element={<HomeTeste />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/bus" element={<Bu />} />
-          <Route path="/bus/cadastro/" element={<CadastroBU />} />
-          <Route path="/bus/cadastro/:id" element={<CadastroBU />} />
-          <Route path="/areas" element={<Area />} />
-          <Route path="/areas/cadastro" element={<CadastroArea />} />
-          <Route path="/plantas" element={<Planta />} />
-          <Route path="/plantas/cadastro" element={<CadastroPlanta />} />
-          <Route path="/cargos" element={<Cargo />} />
-          <Route path="/cargos/cadastro" element={<CadastroCargo />} />
-          <Route path="/turnos" element={<Turno />} />
-          <Route path="/turnos/cadastro" element={<CadastroTurno />} />
-          <Route path="/especialidades" element={<Especialidade />} />
-          <Route path="/especialidades/cadastro" element={<CadastroEspecialidade />} />
-          <Route path="/uos" element={<Uo />} />
-          <Route path="/uos/cadastro" element={<CadastroUo />} />
-          <Route path="/linhas" element={<Linha />} />
-          <Route path="/linhas/cadastro" element={<CadastroLinha />} />
-          <Route path="/tecnologias" element={<Tecnologia />} />
-          <Route path="/tecnologias/cadastro" element={<CadastroTecnologia />} />
-          <Route path="/tiposequip" element={<TipoEquip />} />
-          <Route path="/tiposequip/cadastro" element={<CadastroTipo />} />
+          <Route path="/teste" element={<HomeTeste/>} />
+          <Route path="/" element={<Home usuario={usuario} acesso={acesso}/>} />
+          <Route path="/bus" element={<Bu usuario={usuario} acesso={acesso}/>} />
+          <Route path="/bus/cadastro/" element={<CadastroBU usuario={usuario} acesso={acesso}/>} />
+          <Route path="/bus/cadastro/:id" element={<CadastroBU usuario={usuario} acesso={acesso}/>} />
+          <Route path="/areas" element={<Area usuario={usuario} acesso={acesso}/>} />
+          <Route path="/areas/cadastro" element={<CadastroArea usuario={usuario} acesso={acesso}/>} />
+          <Route path="/plantas" element={<Planta usuario={usuario} acesso={acesso}/>} />
+          <Route path="/plantas/cadastro" element={<CadastroPlanta usuario={usuario} acesso={acesso}/>} />
+          <Route path="/cargos" element={<Cargo usuario={usuario} acesso={acesso}/>} />
+          <Route path="/cargos/cadastro" element={<CadastroCargo usuario={usuario} acesso={acesso}/>} />
+          <Route path="/turnos" element={<Turno usuario={usuario} acesso={acesso}/>} />
+          <Route path="/turnos/cadastro" element={<CadastroTurno usuario={usuario} acesso={acesso}/>} />
+          <Route path="/especialidades" element={<Especialidade usuario={usuario} acesso={acesso}/>} />
+          <Route path="/especialidades/cadastro" element={<CadastroEspecialidade usuario={usuario} acesso={acesso}/>} />
+          <Route path="/uos" element={<Uo usuario={usuario} acesso={acesso}/>} />
+          <Route path="/uos/cadastro" element={<CadastroUo usuario={usuario} acesso={acesso}/>} />
+          <Route path="/linhas" element={<Linha usuario={usuario} acesso={acesso}/>} />
+          <Route path="/linhas/cadastro" element={<CadastroLinha usuario={usuario} acesso={acesso}/>} />
+          <Route path="/tecnologias" element={<Tecnologia usuario={usuario} acesso={acesso}/>} />
+          <Route path="/tecnologias/cadastro" element={<CadastroTecnologia usuario={usuario} acesso={acesso}/>} />
+          <Route path="/tiposequip" element={<TipoEquip usuario={usuario} acesso={acesso}/>} />
+          <Route path="/tiposequip/cadastro" element={<CadastroTipo usuario={usuario} acesso={acesso}/>} />
       </Routes>
     )
   },[])

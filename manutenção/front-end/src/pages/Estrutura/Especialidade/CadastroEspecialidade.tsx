@@ -17,7 +17,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroEspecialidade(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroEspecialidade(user: usuario){
 
   
   const formRef = useRef<FormHandles>(null);

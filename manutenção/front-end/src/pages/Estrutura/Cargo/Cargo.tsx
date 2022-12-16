@@ -16,7 +16,12 @@ type resposta ={
   status: string;
 }
 
-function Cargo(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Cargo(user: usuario){
   const rote = useNavigate();
   const [cargoList, setCargoList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()

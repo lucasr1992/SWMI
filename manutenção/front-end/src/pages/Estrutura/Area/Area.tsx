@@ -21,7 +21,12 @@ type resposta ={
   status: string;
 }
 
-function Area(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Area(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [areaList, setAreaList] = useState<resposta[]>([])

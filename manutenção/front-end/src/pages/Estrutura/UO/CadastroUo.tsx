@@ -29,7 +29,13 @@ type selectValu = {
   label: string;
 }
 
-function CadastroUo(){
+
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroUo(user:usuario){
   const [selectValue, setSelectValue] = useState<selectValu[]>([])
   const formRef = useRef<FormHandles>(null);
   const route = useNavigate();

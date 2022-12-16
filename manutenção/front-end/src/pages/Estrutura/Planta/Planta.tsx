@@ -20,7 +20,12 @@ type resposta ={
   status: string;
 }
 
-function Planta(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Planta(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [plantaList, setPlantaList] = useState<resposta[]>([])

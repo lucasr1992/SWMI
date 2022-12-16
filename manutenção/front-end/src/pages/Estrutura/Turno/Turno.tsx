@@ -18,7 +18,12 @@ type resposta ={
   status: string;
 }
 
-function Turno(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Turno(user: usuario){
   const rote = useNavigate();
   const [turnoList, setTurnoList] = useState<resposta[]>([])
   const [idList, setIdList] = useState({

@@ -19,7 +19,13 @@ type resposta ={
   status: string;
 }
 
-function Uo(){
+
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Uo(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [uoList, setUoList] = useState<resposta[]>([])

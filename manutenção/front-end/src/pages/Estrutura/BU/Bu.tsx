@@ -17,18 +17,26 @@ type resposta ={
   status: string;
 }
 
-function Bu(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Bu(user:usuario){
   const rote = useNavigate();
   const [buList, setBuList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
   
 
   useEffect(() => {
     loadBuAtivo();
     BuCadastrada();
     LoginOn();
+ 
   }, [])
 
 
@@ -73,20 +81,34 @@ function Bu(){
   }
 
   function desativar(bu: string){
-    setComando('desativar')
-    setIdList(bu)
-    setModalVisible(true)
+    console.log(edicao)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(bu)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(bu: string){
-    setComando('ativar')
-    setIdList(bu)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(bu)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
+    
   }
 
   function Novo(){
-    rote(`/bus/cadastro`)
+    if(cadastro === true){
+      rote(`/bus/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarBu(){
@@ -105,6 +127,21 @@ function Bu(){
     setModalVisible(false)
   }
 
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.id === 1)?.edicao;
+    const add = user.acesso.find((item:any) => item.id === 1)?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
+
+  function mostrarAcess(){
+    console.log(user.acesso);
+
+    console.log("Usuario ")
+    console.log(user.usuario)
+  }
+
   return(
     <Content >
       {modalVisible ? 
@@ -120,6 +157,7 @@ function Bu(){
       <div className='titulo'>
         <h1 className='title'>Business Unit</h1>
         <div className='btn-lista'>
+          <button onClick={mostrarAcess}><ButtonDefault>Teste</ButtonDefault></button>
           <AiIcons.AiOutlineReload onClick={loadBuAtivo}/>
           <button className='botao' onClick={Novo}><ButtonDefault   >Novo</ButtonDefault></button>
           <button className='botao' onClick={loadBuAtivo}><ButtonDefault   >Ativos</ButtonDefault></button>
@@ -142,9 +180,10 @@ function Bu(){
                 <th className='item-list' >{buList.id}</th>
                 <th className='item-list'>{buList.business}</th>
                 <th className='item-list'>{buList.nome}</th>
-                <th className='cmd'>{buList.status === 'ATIVO' ? <MdDeleteForever onClick={() => desativar(buList.business)}/> : 
-                  <AiIcons.AiFillCheckSquare onClick={() => ativar(buList.business)}/>}
-                </th>
+                  <th className='cmd'>
+                    {buList.status === 'ATIVO' ? <MdDeleteForever onClick={() => desativar(buList.business)}/> : 
+                    <AiIcons.AiFillCheckSquare onClick={() => ativar(buList.business)}/>}
+                  </th>
               </tr>
             ))
           }

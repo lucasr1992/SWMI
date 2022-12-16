@@ -17,7 +17,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroTecnologia(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroTecnologia(user:usuario){
 
   
   const formRef = useRef<FormHandles>(null);

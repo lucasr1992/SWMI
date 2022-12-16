@@ -17,7 +17,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroTipo(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroTipo(user:usuario){
   const formRef = useRef<FormHandles>(null);
   const route = useNavigate();
   const { id }= useParams();

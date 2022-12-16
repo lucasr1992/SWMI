@@ -17,7 +17,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroTurno(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroTurno(user:usuario){
 
   
   const formRef = useRef<FormHandles>(null);

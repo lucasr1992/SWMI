@@ -18,7 +18,12 @@ type resposta ={
   status: string;
 }
 
-function TipoEquip(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function TipoEquip(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [tipoList, setTipoList] = useState<resposta[]>([])

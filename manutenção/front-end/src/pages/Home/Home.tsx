@@ -5,6 +5,7 @@ import * as faker from '@faker-js/faker'
 import { Content } from './style'
 import api from '../../service/api';
 import { useNavigate } from 'react-router-dom';
+import ButtonDefault from '../../components/Button/ButtonDefault';
 
 ChartJS.register(
     CategoryScale,
@@ -19,7 +20,8 @@ ChartJS.register(
 
 
 interface PageProps extends HtmlHTMLAttributes<HTMLDivElement>{
-  
+  acesso:any
+  usuario:any
 }
 
 export const options = {
@@ -61,10 +63,16 @@ export const options = {
     valor: string;
   }
 
-function Home(classe : PageProps){
+function Home( classe : PageProps ){
   const [areaList, setAreaList] = useState<props>()
   const rota = useNavigate();
   
+
+  function mostrarAcess(){
+    console.log(classe.acesso);
+    console.log("Usuario ")
+    console.log(classe.usuario)
+  }
 
   // useEffect(() => {
   //   let intervalId:any
@@ -111,10 +119,12 @@ function Home(classe : PageProps){
     <Content className={classe.className}>
       {/* <h1>Dashboard Teste</h1>*/}
       
-      <Bar width={50} height={15} options={options} data={data} /> 
+      {/* <Bar width={50} height={15} options={options} data={data} />  */}
+      <button onClick={mostrarAcess}><ButtonDefault>Teste</ButtonDefault></button>
+      {/* 
       <h1>Maquina: BMZT-001</h1>
       <h1>Parâmetro: Temperatura</h1>
-      <h1>Valor: {areaList?.valor}</h1>
+      <h1>Valor: {areaList?.valor}</h1> */}
 
 
     </Content>

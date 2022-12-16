@@ -18,7 +18,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroBU(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroBU(user:usuario){
 
   
   const formRef = useRef<FormHandles>(null);

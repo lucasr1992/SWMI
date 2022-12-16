@@ -19,7 +19,12 @@ type resposta ={
   status: string;
 }
 
-function Linha(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Linha(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [linhaList, setLinhaList] = useState<resposta[]>([])

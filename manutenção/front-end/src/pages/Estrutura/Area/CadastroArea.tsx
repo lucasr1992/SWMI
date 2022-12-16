@@ -32,7 +32,12 @@ interface uoProps{
   status: string;
 };
 
-function CadastroArea(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroArea(user:usuario){
   const [uoList, setUoList] = useState<uoProps[]>([])
   const [selectValue, setSelectValue] = useState<selectValu[]>([])
   const formRef = useRef<FormHandles>(null);

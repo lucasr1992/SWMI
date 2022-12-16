@@ -17,7 +17,12 @@ type requestFiled ={
   status: string;
 }
 
-function CadastroCargo(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function CadastroCargo(user:usuario){
 
   
   const formRef = useRef<FormHandles>(null);

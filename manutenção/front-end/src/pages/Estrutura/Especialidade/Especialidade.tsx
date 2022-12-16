@@ -16,7 +16,12 @@ type resposta ={
   status: string;
 }
 
-function Especialidade(){
+type usuario ={
+  acesso:any;
+  usuario:any;
+}
+
+function Especialidade(user:usuario){
   const rote = useNavigate();
   const route = useNavigate();
   const [especialidadeList, setEspecialidadeList] = useState<resposta[]>([])
