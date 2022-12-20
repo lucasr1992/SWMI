@@ -35,9 +35,9 @@ function Bu(user:usuario){
   useEffect(() => {
     loadBuAtivo();
     BuCadastrada();
-    LoginOn();
- 
-  }, [])
+    acessoFunct();
+    LoginOn(); 
+  }, [user.acesso, user.usuario])
 
 
 
@@ -81,7 +81,6 @@ function Bu(user:usuario){
   }
 
   function desativar(bu: string){
-    console.log(edicao)
     if(edicao === true){
       setComando('desativar')
       setIdList(bu)
@@ -129,17 +128,17 @@ function Bu(user:usuario){
 
 
   function acessoFunct(){
-    const edit = user.acesso.find((item:any) => item.id === 1)?.edicao;
-    const add = user.acesso.find((item:any) => item.id === 1)?.cadastro;
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
     setCadastro(add)
     setEdicao(edit)
   }
 
   function mostrarAcess(){
-    console.log(user.acesso);
+    console.log(user.acesso)
 
-    console.log("Usuario ")
-    console.log(user.usuario)
+    console.log("Cadastro: ", cadastro)
+    console.log("Edicao: ", edicao)
   }
 
   return(

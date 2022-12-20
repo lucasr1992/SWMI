@@ -27,7 +27,7 @@ function Sidebar({acesso, onClose= () => {} }:any){
 
   useEffect(() => {
     acessoCargo();
-  }, [])
+  }, [acesso])
 
   function acessoCargo(){
     var arr: number;
