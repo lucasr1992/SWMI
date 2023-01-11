@@ -26,6 +26,35 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    .div-registro{
+      display: flex;
+      width:100%;
+      label{
+        margin-right:5px;
+      }
+      .registro{
+        width:35%;
+        margin-right:8px;
+      }
+    }
+    
+    .div-email{
+      margin-top:15px;
+      display: flex;
+      width:100%;
+      .senha{
+        display: flex;
+        label{
+          margin-right:20px;
+        }
+        width:45%;
+        
+      }
+      .email-label{
+        margin-left: 6px;
+        width:8%;
+      }
+    }
     
 
     .but-salvar-div{
@@ -35,59 +64,12 @@ export const Content = styled.div`
         width: 100%;
       }
     }
-   
   }
+
+  
   
 
-  .planta{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    width: 50%;
-    margin-bottom: 30px;
-    label{
-      margin-bottom: 5px;
-    }
-  }
-
-  .regiao{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    width: 50%;
-    margin-bottom: 30px;
-    label{
-      margin-bottom: 5px;
-    }
-   
-  }
-
-  .pais{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    width: 50%;
-    margin-bottom: 30px;
-    label{
-      margin-bottom: 5px;
-    }
-   
-  }
-
-  .unidade{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: center;
-    width: 50%;
-    label{
-      margin-bottom: 5px;
-    }
-   
-  }
+  
   
 
   @media screen and (max-width: 1000px) {
@@ -95,19 +77,7 @@ export const Content = styled.div`
       font-size: 1.5rem;
     }
 
-    .planta{
-      width: 100%;
-    }
-
-    .regiao{
-      width: 100%;
-    }
-    .pais{
-      width: 100%;
-    }
-    .unidade{
-      width: 100%;
-    }
+    
 
     form{
       .but-salvar-div{

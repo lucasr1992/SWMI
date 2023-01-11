@@ -136,19 +136,24 @@ function CadastroColaborador(user:usuario){
       </div>     
       <Form   ref={formRef} onSubmit={salvar}>
           <div className='div-registro'>
-          <label>Registro</label>
-          <InputDefalt name={"planta"} id='area' Main={true}  />
-        
-          <label>Nome</label>
-          <InputDefalt name={"planta"} id='area' Main={true}  />
+            <label>Registro:</label>
+            <div className='registro'>
+              <InputDefalt name={"planta"} id='area' Main={true}  />
+            </div>
+            <label>Nome:</label>
+            <InputDefalt name={"planta"} id='area' Main={true}  />
           </div>
+          <div className='div-email'>
+            <div className='senha'>
+              <label>Senha:</label>
+              <InputDefalt name={"planta"} id='area' Main={true}  />
+            </div>
+              <label className='email-label'>E-Mail:</label>
+              <InputDefalt name={"planta"} id='area' Main={true}  />
+          </div>
+
           
-
-          <label>Senha</label>
-          <InputDefalt name={"planta"} id='area' Main={true}  />
-
-          <label>E-mail</label>
-          <InputDefalt name={"planta"} id='area' Main={true}  />
+          
 
         <div className="unidade">
           <label>U.O.</label>
