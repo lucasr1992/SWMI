@@ -1,6 +1,7 @@
 import {  useNavigate } from 'react-router-dom';
 import {MdDeleteForever} from 'react-icons/md';
 import * as AiIcons from 'react-icons/ai'
+import * as FaIcons from 'react-icons/fa'
 import {  useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,9 +12,11 @@ import ButtonDefault from '../../components/Button/ButtonDefault';
 import ModalDefaultAprovacao from '../../components/Modal/ModalAprovacao';
 
 type resposta ={
-  id: number;
-  business: string;
+  registro: string;
   nome: string;
+  departamento:{
+    departamento:string
+  };
   status: string;
 }
 
@@ -24,7 +27,7 @@ type usuario ={
 
 function Colaborador(user:usuario){
   const rote = useNavigate();
-  const [buList, setBuList] = useState<resposta[]>([])
+  const [colaboradorList, setColaboradorList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
@@ -33,50 +36,27 @@ function Colaborador(user:usuario){
   
 
   useEffect(() => {
-    loadBuAtivo();
-    BuCadastrada();
+    loadColaboradorAtivo();
     acessoFunct();
     LoginOn(); 
   }, [user.acesso, user.usuario])
 
   function acessoFunct(){
-    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
-    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    const edit = user.acesso.find((item:any) => item.pagina === "Colaborador")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Colaborador")?.cadastro;
     setCadastro(add)
     setEdicao(edit)
   }
 
   function Novo(){
     if(cadastro === true){
-      rote(`/bus/cadastro`)
+      rote(`/colaboradores/cadastro`)
     }else{
       toast.warn("Você Não Tem Permissão")
     }
   }
 
-  function desativar(bu: string){
-    if(edicao === true){
-      setComando('desativar')
-      setIdList(bu)
-      setModalVisible(true)
-    }else{
-      toast.warn("Você Não Tem Permissão")
-    }
-  }
-
-
-  function ativar(bu: string){
-    if(edicao === true){
-      setComando('ativar')
-      setIdList(bu)
-      setModalVisible(true)
-    }else{
-      toast.warn("Você Não Tem Permissão")
-    }
-    
-  }
-
-
+  
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
     if(login === "LoginOn"){
@@ -85,20 +65,11 @@ function Colaborador(user:usuario){
     }
   }
 
-
-
-  function BuCadastrada(){
-    const bu = localStorage.getItem('@BU')
-    localStorage.removeItem('@BU')
-    if(bu != null){
-      toast.success('Unidade de Negócio ' + bu + ' Cadastrada')
-    }
-  }
-
-  const loadBuAtivo = async() => {
+  const loadColaboradorAtivo = async() => {
     try{
-      const response = await api.get('/unidades/status/ATIVO').then((response) => {
-        setBuList(response.data);  
+      const response = await api.get('/colaboradores/status/ATIVO').then((response) => {
+        setColaboradorList(response.data);  
+        console.log(response.data);
       });
     }catch(error:any){
       toast.error("Falha na Conexão")
@@ -106,86 +77,48 @@ function Colaborador(user:usuario){
   }
 
 
-  const loadBuDesativado = async() => {
+  const loadColaboradorDesativado = async() => {
     try{
-      const response = await api.get('/unidades/status/DESATIVADO').then((response) => {
-        setBuList(response.data);  
+      const response = await api.get('/colaboradores/status/DESATIVADO').then((response) => {
+        setColaboradorList(response.data);  
       });
     }catch(error:any){
       toast.error("Falha na Conexão")
     }
   }
 
-  
-
- 
-
-  async function desativarBu(){
-    const response = await api.put(`/unidades/desativar/${idList}`).then(() => {
-      toast.success("Unidade de Negócio " + idList + " Desativado com Sucesso");
-    })
-    loadBuAtivo()
-    setModalVisible(false)
-  }
-
-  async function ativarBu(){
-    const response = await api.put(`/unidades/ativar/${idList}`).then(() => {
-      toast.success("Unidade de Negócio " + idList + " Ativada com Sucesso");
-    })
-    loadBuAtivo()
-    setModalVisible(false)
-  }
-
-
-  
-
-  function mostrarAcess(){
-    console.log(user.acesso)
-
-    console.log("Cadastro: ", cadastro)
-    console.log("Edicao: ", edicao)
-  }
 
   return(
     <Content >
-      {modalVisible ? 
-          (comando==='desativar' ? 
-            <ModalDefaultAprovacao onClose={() => setModalVisible(false)}
-            yes={() => desativarBu()} no={() => setModalVisible(false)}>Gostaria de Desativar este item?</ModalDefaultAprovacao> 
-            : 
-            <ModalDefaultAprovacao onClose={() => setModalVisible(false)}
-            yes={() => ativarBu()} no={() => setModalVisible(false)}>Gostaria de Ativar este item?</ModalDefaultAprovacao>
-          ) 
-      : null}
+      
       <ToastContainer closeOnClick={true} theme={'colored'} autoClose={2000}  pauseOnHover={true} closeButton={false}/>
       <div className='titulo'>
         <h1 className='title'>Colaboradores</h1>
         <div className='btn-lista'>
-          <AiIcons.AiOutlineReload onClick={loadBuAtivo}/>
-          <button className='botao' onClick={Novo}><ButtonDefault   >Novo</ButtonDefault></button>
-          <button className='botao' onClick={loadBuAtivo}><ButtonDefault   >Ativos</ButtonDefault></button>
-          <button className='botao' onClick={loadBuDesativado} ><ButtonDefault   >Desativados</ButtonDefault></button>
+          <AiIcons.AiOutlineReload onClick={loadColaboradorAtivo}/>
+          <button className='botao' onClick={Novo}><ButtonDefault>Novo</ButtonDefault></button>
+          <button className='botao' onClick={loadColaboradorAtivo}><ButtonDefault>Ativos</ButtonDefault></button>
+          <button className='botao' onClick={loadColaboradorDesativado} ><ButtonDefault>Desativados</ButtonDefault></button>
         </div>
       </div>
       <table>
         <thead>
           <tr>
-            <th className='title-list'>ID</th>
-            <th className='title-list'>Simbol.</th>
+            <th className='title-list'>Registro</th>
             <th className='title-list'>Nome</th>
+            <th className='title-list'>Departamento</th>
             <th className='title-list'>Comando</th>
           </tr>
         </thead>
         <tbody>
           {
-            buList.map( buList => (
-              <tr key={buList.id}>
-                <th className='item-list' >{buList.id}</th>
-                <th className='item-list'>{buList.business}</th>
-                <th className='item-list'>{buList.nome}</th>
+            colaboradorList.map( colaboradorList => (
+              <tr key={colaboradorList.registro}>
+                <th className='item-list' >{colaboradorList.registro}</th>
+                <th className='item-list'>{colaboradorList.nome}</th>
+                <th className='item-list'>{colaboradorList.departamento.departamento}</th>
                   <th className='cmd'>
-                    {buList.status === 'ATIVO' ? <MdDeleteForever onClick={() => desativar(buList.business)}/> : 
-                    <AiIcons.AiFillCheckSquare onClick={() => ativar(buList.business)}/>}
+                    <FaIcons.FaPencilAlt/>
                   </th>
               </tr>
             ))

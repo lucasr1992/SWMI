@@ -36,6 +36,7 @@ import HomeTeste from '../pages/A_teste/HomeTeste'
 import InputDefalt from "../components/Input/InputDefalt";
 import ButtonDefault from "../components/Button/ButtonDefault";
 import Colaborador from "../pages/Colaborador/Colaboradores";
+import CadastroColaborador from "../pages/Colaborador/CadastroColaboradores";
 
 
 type request={
@@ -176,6 +177,7 @@ function AppRoutes(){
               <Route path="/tiposequip" element={<TipoEquip usuario={usuario} acesso={acesso}/>} />
               <Route path="/tiposequip/cadastro" element={<CadastroTipo usuario={usuario} acesso={acesso}/>} />
               <Route path="/colaboradores" element={<Colaborador usuario={usuario} acesso={acesso}/>} />
+              <Route path="/colaboradores/cadastro" element={<CadastroColaborador usuario={usuario} acesso={acesso}/>} />
             </Routes>
           </Layout>
         </BrowserRouter> 
