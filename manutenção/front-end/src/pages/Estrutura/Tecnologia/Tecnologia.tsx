@@ -33,12 +33,23 @@ function Tecnologia(user:usuario){
   })
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
+
 
   useEffect(() => {
     loadTecnologiaAtivo();
     TecnologiaCadastrada();
+    acessoFunct();
     LoginOn();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -78,27 +89,39 @@ function Tecnologia(user:usuario){
   }
 
   function desativar(tecnologia: string, id: number){
-    setComando('desativar')
-    setIdList({
-      id: id,
-      tecnologia: tecnologia,
-    })
-    console.log(idList)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList({
+        id: id,
+        tecnologia: tecnologia,
+      })
+      console.log(idList)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(tecnologia: string, id: number){
-    setComando('ativar')
-    setIdList({
-      id: id,
-      tecnologia: tecnologia,
-    })
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList({
+        id: id,
+        tecnologia: tecnologia,
+      })
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/tecnologias/cadastro`)
+    if(cadastro === true){
+      rote(`/tecnologias/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarTecnologia(){

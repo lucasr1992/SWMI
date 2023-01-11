@@ -33,12 +33,24 @@ function Area(user:usuario){
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     LoginOn();
     loadAreaAtivo();
+    acessoFunct();
     AreaCadastrada();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
+
+
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -77,20 +89,32 @@ function Area(user:usuario){
   }
 
   function desativar(area: string){
-    setComando('desativar')
-    setIdList(area)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(area)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(area: string){
-    setComando('ativar')
-    setIdList(area)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(area)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/areas/cadastro`)
+    if(cadastro === true){
+      rote(`/areas/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarArea(){

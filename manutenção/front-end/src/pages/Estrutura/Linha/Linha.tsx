@@ -31,12 +31,22 @@ function Linha(user:usuario){
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     loadLinhaAtivo();
     LinhaCadastrada();
+    acessoFunct();
     LoginOn();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -77,20 +87,32 @@ function Linha(user:usuario){
   }
 
   function desativar(linha: string){
-    setComando('desativar')
-    setIdList(linha)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(linha)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(linha: string){
-    setComando('ativar')
-    setIdList(linha)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(linha)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/linhas/cadastro`)
+    if(cadastro === true){
+      rote(`/linhas/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarLinha(){

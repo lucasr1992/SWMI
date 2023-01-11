@@ -32,12 +32,22 @@ function Turno(user: usuario){
   })
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     loadTurnoAtivo();
     TurnoCadastrada();
+    acessoFunct();
     LoginOn();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -77,26 +87,38 @@ function Turno(user: usuario){
   }
 
   function desativar(turno: string, id: number){
-    setComando('desativar')
-    setIdList({
-      id: id,
-      turno: turno,
-    })
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList({
+        id: id,
+        turno: turno,
+      })
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(turno: string, id: number){
-    setComando('ativar')
-    setIdList({
-      id: id,
-      turno: turno,
-    })
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList({
+        id: id,
+        turno: turno,
+      })
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/turnos/cadastro`)
+    if(cadastro === true){
+      rote(`/turnos/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarTurno(){

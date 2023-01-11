@@ -33,12 +33,22 @@ function TipoEquip(user:usuario){
   })
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     loadTipoAtivo();
     TipoCadastrada();
+    acessoFunct();
     LoginOn();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -78,26 +88,38 @@ function TipoEquip(user:usuario){
   }
 
   function desativar(tipo: string, id: number){
-    setComando('desativar')
-    setIdList({
-      id: id,
-      tipoequipamento: tipo,
-    })
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList({
+        id: id,
+        tipoequipamento: tipo,
+      })
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(tipo: string, id: number){
-    setComando('ativar')
-    setIdList({
-      id: id,
-      tipoequipamento: tipo,
-    })
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList({
+        id: id,
+        tipoequipamento: tipo,
+      })
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/tiposequip/cadastro`)
+    if(cadastro === true){
+      rote(`/tiposequip/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarTipo(){

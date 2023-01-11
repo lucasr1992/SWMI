@@ -33,12 +33,23 @@ function Planta(user:usuario){
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
   const [planta, setPlanta] = useState()
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     loadPlantaAtivo();
     PlantaCadastrada();
+    acessoFunct();
     LoginOn();
   }, [])
+
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -95,21 +106,33 @@ function Planta(user:usuario){
   }
 
   function ativar(planta: any){
-    setComando('ativar')
-    setIdList(planta.id)
-    setPlanta(planta.planta)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(planta.id)
+      setPlanta(planta.planta)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function desativar(planta: any){
-    setComando('desativar')
-    setIdList(planta.id)
-    setPlanta(planta.planta)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(planta.id)
+      setPlanta(planta.planta)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/plantas/cadastro`)
+    if(cadastro === true){
+      rote(`/plantas/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   return(

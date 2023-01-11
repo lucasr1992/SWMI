@@ -5,10 +5,10 @@ import {  useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import api from '../../../service/api';
-import { Content } from './styleBu';
-import ButtonDefault from '../../../components/Button/ButtonDefault';
-import ModalDefaultAprovacao from '../../../components/Modal/ModalAprovacao';
+import api from '../../service/api';
+import { Content } from './styleColaboradores';
+import ButtonDefault from '../../components/Button/ButtonDefault';
+import ModalDefaultAprovacao from '../../components/Modal/ModalAprovacao';
 
 type resposta ={
   id: number;
@@ -22,7 +22,7 @@ type usuario ={
   usuario:any;
 }
 
-function Bu(user:usuario){
+function Colaborador(user:usuario){
   const rote = useNavigate();
   const [buList, setBuList] = useState<resposta[]>([])
   const [idList, setIdList] = useState<string>()
@@ -159,7 +159,7 @@ function Bu(user:usuario){
       : null}
       <ToastContainer closeOnClick={true} theme={'colored'} autoClose={2000}  pauseOnHover={true} closeButton={false}/>
       <div className='titulo'>
-        <h1 className='title'>Business Unit</h1>
+        <h1 className='title'>Colaboradores</h1>
         <div className='btn-lista'>
           <AiIcons.AiOutlineReload onClick={loadBuAtivo}/>
           <button className='botao' onClick={Novo}><ButtonDefault   >Novo</ButtonDefault></button>
@@ -198,4 +198,4 @@ function Bu(user:usuario){
 
 
 //#dddada
-export default Bu;
+export default Colaborador;

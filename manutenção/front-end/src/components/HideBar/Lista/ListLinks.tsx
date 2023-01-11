@@ -47,9 +47,9 @@ export const SidebarData = [
 
       {
         title: 'Colaborador',
-        path: null,
+        path: "/colaboradores",
         icon: <BsIcons.BsFillPeopleFill />,
-        notificatio: 0,
+        notificatio: 0        
       },
 
       {

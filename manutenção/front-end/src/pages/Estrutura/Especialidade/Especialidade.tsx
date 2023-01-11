@@ -28,13 +28,23 @@ function Especialidade(user:usuario){
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     LoginOn();
     loadEspecialidadeAtivo();
     EspecialidadeCadastrada();
+    acessoFunct();
     
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -74,20 +84,32 @@ function Especialidade(user:usuario){
   }
 
   function desativar(especialidade: string){
-    setComando('desativar')
-    setIdList(especialidade)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(especialidade)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(especialidade: string){
-    setComando('ativar')
-    setIdList(especialidade)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(especialidade)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/especialidades/cadastro`)
+    if(cadastro === true){
+      rote(`/especialidades/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarEspecialidade(){

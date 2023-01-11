@@ -32,12 +32,22 @@ function Uo(user:usuario){
   const [idList, setIdList] = useState<string>()
   const [modalVisible, setModalVisible] = useState(false);
   const [comando, setComando] = useState('desativar')
+  const [cadastro, setCadastro] = useState(false)
+  const [edicao, setEdicao] = useState(false)
 
   useEffect(() => {
     loadUoAtivo();
     UoCadastrada();
+    acessoFunct();
     LoginOn();
-  }, [])
+  }, [user.acesso, user.usuario])
+
+  function acessoFunct(){
+    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    setCadastro(add)
+    setEdicao(edit)
+  }
 
   function LoginOn(){
     const login = localStorage.getItem('@LOGIN')
@@ -78,20 +88,32 @@ function Uo(user:usuario){
   }
 
   function desativar(uo: string){
-    setComando('desativar')
-    setIdList(uo)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('desativar')
+      setIdList(uo)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
 
   function ativar(uo: string){
-    setComando('ativar')
-    setIdList(uo)
-    setModalVisible(true)
+    if(edicao === true){
+      setComando('ativar')
+      setIdList(uo)
+      setModalVisible(true)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   function Novo(){
-    rote(`/uos/cadastro`)
+    if(cadastro === true){
+      rote(`/uos/cadastro`)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   async function desativarUo(){
@@ -103,11 +125,15 @@ function Uo(user:usuario){
   }
 
   async function ativarUo(){
-    const response = await api.put(`/uos/ativar/${idList}`).then(() => {
-      toast.success("Cargo " + idList + " Ativado com Sucesso");
-    })
-    loadUoAtivo()
-    setModalVisible(false)
+    if(edicao === true){
+      const response = await api.put(`/uos/ativar/${idList}`).then(() => {
+        toast.success("Cargo " + idList + " Ativado com Sucesso");
+      })
+      loadUoAtivo()
+      setModalVisible(false)
+    }else{
+      toast.warn("Você Não Tem Permissão")
+    }
   }
 
   return(
