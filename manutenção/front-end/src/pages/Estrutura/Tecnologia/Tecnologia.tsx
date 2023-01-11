@@ -45,8 +45,8 @@ function Tecnologia(user:usuario){
   }, [user.acesso, user.usuario])
 
   function acessoFunct(){
-    const edit = user.acesso.find((item:any) => item.pagina === "Registros")?.edicao;
-    const add = user.acesso.find((item:any) => item.pagina === "Registros")?.cadastro;
+    const edit = user.acesso.find((item:any) => item.pagina === "Estrutura")?.edicao;
+    const add = user.acesso.find((item:any) => item.pagina === "Estrutura")?.cadastro;
     setCadastro(add)
     setEdicao(edit)
   }

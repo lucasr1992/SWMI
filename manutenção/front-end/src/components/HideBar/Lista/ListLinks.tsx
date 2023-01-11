@@ -50,84 +50,73 @@ export const SidebarData = [
         path: "/colaboradores",
         icon: <BsIcons.BsFillPeopleFill />,
         notificatio: 0        
-      },
-
-      {
-        title: 'Estrutura',
-        path: null,
-        icon: <GiIcons.GiFactory />,
-        visible: true,
-        subDropdown:[
-          
-          {
-            title: 'BU',
-            path: '/bus',
-            icon: <GiIcons.GiFactory />,
-          },
-      
-          {
-            title: 'Planta',
-            path: '/plantas',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'UO',
-            path: '/uos',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Area',
-            path: '/areas',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Linha',
-            path: '/linhas',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Tecnologia',
-            path: '/tecnologias',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Tipo Equip.',
-            path: '/tiposequip',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Especialidade',
-            path: '/especialidades',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Cargo',
-            path: '/cargos',
-            icon: <GiIcons.GiFactory />,
-          },
-
-          {
-            title: 'Turno',
-            path: '/turnos',
-            icon: <GiIcons.GiFactory />,
-          },
-          
-        ]
-      },
-      
+      },      
     ]
   },
 
-
   {
     id: 2,
+    title: 'Estrutura',
+    path: null,
+    icon: <GiIcons.GiFactory />,
+    notificatio: 0,
+    visible: false,
+    subNav: [
+      {
+        title: 'BU',
+        path: '/bus',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Planta',
+        path: '/plantas',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'UO',
+        path: '/uos',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Area',
+        path: '/areas',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Linha',
+        path: '/linhas',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Tecnologia',
+        path: '/tecnologias',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Tipo Equip.',
+        path: '/tiposequip',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Especialidade',
+        path: '/especialidades',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Cargo',
+        path: '/cargos',
+        icon: <GiIcons.GiFactory />
+      },
+      {
+        title: 'Turno',
+        path: '/turnos',
+        icon: <GiIcons.GiFactory />,
+      }
+    ]
+  },
+
+  {
+    id: 3,
     title: 'Support',
     path: '/teste',
     icon: <IoIcons.IoMdHelpCircle />,

@@ -77,7 +77,7 @@ insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pende
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Registros", 0, 0, 1, 1);
 --insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Maquinas", 1, 1, 1, 1);
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Colaborador", 1, 1, 1, 1);
---insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Estrutura", 1, 1, 1, 1);
+insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Estrutura", 1, 1, 1, 1);
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (4, "Support", 1, 1, 1, 1);
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (2, "Home", 1, 1, 1, 1);
 insert into tb_acesso(cargo_id, pagina, cadastro, edicao, pendencias_acao, pendencias_visualizacao) values (2, "Support", 1, 1, 1, 1);
