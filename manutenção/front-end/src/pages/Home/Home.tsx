@@ -1,18 +1,11 @@
 import { HtmlHTMLAttributes, useEffect, useState } from 'react';
-import {  Chart as ChartJS,  CategoryScale,  LinearScale,  BarElement,  Title,  Tooltip,  Legend,} from 'chart.js';
+
 import { Bar } from 'react-chartjs-2';
 import * as faker from '@faker-js/faker'
 import { Content } from './style'
 import api from '../../service/api';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+
 
 
 
@@ -90,10 +83,7 @@ function Home(classe : PageProps){
     <Content className={classe.className}>
       {/* <h1>Dashboard Teste</h1>*/}
       
-      <Bar width={50} height={15} options={options} data={data} /> 
-      <h1>Maquina: BMZT-001</h1>
-      <h1>Parâmetro: Temperatura</h1>
-      <h1>Valor: {areaList?.valor}</h1>
+      <h1>Home Page</h1>
 
 
     </Content>
