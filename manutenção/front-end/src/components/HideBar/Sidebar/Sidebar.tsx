@@ -7,11 +7,6 @@ import { SubMenu } from '../Dropdown/Dropdown'
 import Logo from '../../../assets/logo.svg'
 
 
-
-
-
-
-
 function Sidebar({onClose= () => {} }:any){  
   const [sidebarOpen, SetSidebarOpen] = useState(true);
   const [paginaOn, setPaginaOn] = useState(0)
@@ -40,10 +35,7 @@ function Sidebar({onClose= () => {} }:any){
         <div className="imgLogo"><GiTechnoHeart /><h1 className="titulo-logo">SWMI</h1></div>
         {/* <div className="imgLogo"><img src={Logo}/></div> */}
         </SLogo>
-        {/* <SSearch isOpen={sidebarOpen}>
-          <SSearchIcon><AiOutlineSearch/></SSearchIcon>
-          <input placeholder="Search"/>
-        </SSearch> */}
+        
         <SDivider/>
         {SidebarData.map((item: any, index) => {
           return(

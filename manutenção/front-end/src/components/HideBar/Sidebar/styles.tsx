@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { btnReset, v } from "../../../style/variaveis";
 
@@ -17,7 +16,6 @@ export const GroupBar = styled.div`
   @media  screen and (max-width: 525px){
     display: none;
   }
-  
 `;
 
 
